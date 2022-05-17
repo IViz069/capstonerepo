@@ -3,21 +3,9 @@
 
     require 'database.php';
 
+    $cart2 = $conn->prepare('DELETE FROM `caps_cart` WHERE `caps_cart`.`id_cliente` = ' . $_SESSION['user_id'] . ' AND `caps_cart`.`id_item` = ' . htmlspecialchars($_GET["id"]));
+    $cart2->execute();
 
-    function removeFromCart($id){
-        $temp = [];
-        for($i=0;$i<count($_SESSION['cart'])/2;$i++){
-            if($_SESSION['cart'][$i*2]==$id){
-
-            }
-            else{
-                array_push($temp, $_SESSION['cart'][$i*2], $_SESSION['cart'][($i*2)+1]);
-            }
-        }
-        return $temp;
-    }
-
-    $_SESSION['cart'] = removeFromCart(htmlspecialchars($_GET["id"]));
 
     header('location:cart.php');
 
