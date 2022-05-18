@@ -9,7 +9,7 @@
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    $sql = "INSERT INTO `caps_login` (`id`, `email`, `password`) VALUES (NULL, '$email', '$password')";
+    $sql = "INSERT INTO `caps_users` (`id`, `email`, `password`) VALUES (NULL, '$email', '$password')";
     $stmt = $conn->prepare($sql);
     $stmt->bindParam(':email', $_POST['email']);
     $stmt->bindParam(':password', $_POST['password']);

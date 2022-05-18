@@ -18,6 +18,10 @@
     $products->execute();
     $productsResults = $products->fetch(PDO::FETCH_ASSOC);
 
+    $checkItem = $conn->prepare('SELECT COUNT(*) AS CANT FROM caps_cart WHERE id_cliente=' . $_SESSION['user_id']. ' AND id_item = ' . htmlspecialchars($_GET["id"]));
+    $checkItem->execute();
+    $checkItemResults = $checkItem->fetch(PDO::FETCH_ASSOC);
+
     if($productsResults==NULL){
         header('location:products.php');
     }
@@ -61,8 +65,8 @@
                 <form method="POST" action="addcart.php?id=<?php echo  $productsResults['id']?>">
                     <input type="number" name="cant" value="1" min="1">
                     <?php
-                    
-                        if(isset($_SESSION['cart']) && hasItem($_SESSION['cart'],$productsResults['id'])){
+
+                        if($checkItemResults['CANT']>0){
                             ?>
                             <input id="butt" type="submit" value="Producto ya en el carrito" disabled>
                             <?php
