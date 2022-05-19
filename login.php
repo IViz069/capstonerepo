@@ -46,9 +46,7 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
 
 <body>
 
-  <?php if (!empty($message)) : ?>
-    <p> <?= $message ?></p>
-  <?php endif; ?>
+
   <br>
 
   <section class="vh-100">
@@ -72,10 +70,13 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
 
             <div class="text-center text-lg-start mt-4 pt-2">
               <input type="submit" class="btn btn-primary btn-lg" style="padding-left: 2.5rem; padding-right: 2.5rem;" value="Ingresar">
-              <p class="small fw-bold mt-2 pt-1 mb-0">No tiene cuenta? <a href="#!" class="link-danger">Registrese</a></p>
+              <p class="small fw-bold mt-2 pt-1 mb-0">No tiene cuenta? <a href="signup.php" class="link-danger">Registrese</a></p>
             </div>
 
           </form>
+          <?php if (!empty($message)) : ?>
+            <p> <?= $message ?></p>
+          <?php endif; ?>
         </div>
       </div>
     </div>
@@ -83,25 +84,12 @@ if (!empty($_POST['email']) && !empty($_POST['password'])) {
       <!-- Copyright -->
       <div class="text-white mb-3 mb-md-0">
         Copyright © 2022. Rodamientos salas SRL derechos reservados.
+        <a style="color: black;" href="#">Login administrativo</a>
       </div>
       <!-- Copyright -->
-
-      <!-- Right -->
       <div>
-        <a href="#!" class="text-white me-4">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="#!" class="text-white me-4">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="#!" class="text-white me-4">
-          <i class="fab fa-google"></i>
-        </a>
-        <a href="#!" class="text-white">
-          <i class="fab fa-linkedin-in"></i>
-        </a>
-      </div>
-      <!-- Right -->
+      <a href="index.php" class="text-white me-4">Inicio</a>
+    </div>
     </div>
   </section>
 </body>
